@@ -201,8 +201,8 @@ With our assumption about median decode length, our throughput is just $$B / (\t
 |  dtype   | QPS / chip |
 | :------: | :--------: |
 | bfloat16 |    0.27    |
-|   int8   |    0.66    |
-|   int4   |    1.72    |
+|   int8   |    0.55    |
+|   int4   |    1.11    |
 
 Note that this is rather optimistic since it totally ignores the working memory of the forward pass (memory allocated to activations and attention). This is not ridiculous with Flash Attention, but it is also not realistic. The real numbers are likely maybe 1/2 of this. For absolutely maximum throughput we would probably want to more than double the number of chips and increase the batch size significantly as well.
 
