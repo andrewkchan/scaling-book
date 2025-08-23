@@ -171,8 +171,8 @@ This is easy! If we're OK with a tiny batch size then the only limit is fitting 
 | dtype | param size | KV size / token (bytes) | min TPU v5es | actual min slice | remaining HBM for KV caches | num KV caches @ 8k |
 | :---: | :--------: | :---------------------: | :----------: | :--------------: | :-------------------------: | :----------------: |
 | bf16  |   140GB    |          324kB          |     8.75     |  4x4 = 16 chips  |             116             |         43         |
-| int8  |    70GB    |          162kB          |     4.38     |  4x2 = 8 chips   |             68              |         52         |
-| int4  |    45GB    |          81kB           |     2.81     |  2x2 = 4 chips   |             19              |         67         |
+| int8  |    70GB    |          162kB          |     4.38     |  4x2 = 8 chips   |             58              |         43         |
+| int4  |    35GB    |          81kB           |     2.81     |  2x2 = 4 chips   |             29              |         43         |
 
 That's pretty cool! It tells us we could fit LLaMA 70B on a TPU v5e 2x2 if we wanted to. Except you'll notice the number of KV caches is very small. That's our batch size! That means we'll be getting terrible FLOPs utilization. We'd be very happy to use a larger topology in order to push our batch size up to 240.
 
